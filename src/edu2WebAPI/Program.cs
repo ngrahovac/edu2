@@ -15,6 +15,20 @@ namespace edu2WebAPI
     {
         public static void Main(string[] args)
         {
+            // reset db data on startup
+            // alternatively: migrate via console after running tests
+            /*
+            ConfigurationBuilder builder = new ConfigurationBuilder();
+            builder.AddUserSecrets("4870057d-6276-462b-bbd7-fdee159ab323");
+            var configuration = builder.Build();
+
+            using (var dbContext = new Edu2DbContext(configuration))
+            {
+                dbContext.Database.EnsureDeleted();
+                dbContext.Database.Migrate();
+            }
+            */
+
             CreateHostBuilder(args).Build().Run();
         }
 

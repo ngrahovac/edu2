@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace edu2Domain
 {
-    public class Project
+    public class Project : IEquatable<Project>
     {
         public int Id { get; set; }
         public int AuthorId { get; set; }
@@ -26,6 +26,22 @@ namespace edu2Domain
         {
             return CollaboratorProfiles.Any(profile => profile.IsRecommendedFor(user))
                 || Tags.Any(projectTag => user.UserSettings.UserTags.Contains(projectTag));
+        }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as Project);
+        }
+
+        public bool Equals(Project other)
+        {
+            return other != null &&
+                   Id == other.Id;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Id);
         }
     }
 }

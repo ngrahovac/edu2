@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "edu2WebAPI", "src\edu2WebAP
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "edu2Domain", "src\edu2Domain\edu2Domain.csproj", "{76115A8A-74D4-43A6-8F08-77141557DBEB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "edu2Tests", "src\edu2Tests\edu2Tests.csproj", "{C08B9CF9-B859-4DDA-BDAC-11D5AF3808AB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,10 +23,10 @@ Global
 		{76115A8A-74D4-43A6-8F08-77141557DBEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{76115A8A-74D4-43A6-8F08-77141557DBEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{76115A8A-74D4-43A6-8F08-77141557DBEB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B4B273A2-38BC-4DA6-813D-05C58EE4199F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B4B273A2-38BC-4DA6-813D-05C58EE4199F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B4B273A2-38BC-4DA6-813D-05C58EE4199F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B4B273A2-38BC-4DA6-813D-05C58EE4199F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C08B9CF9-B859-4DDA-BDAC-11D5AF3808AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C08B9CF9-B859-4DDA-BDAC-11D5AF3808AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C08B9CF9-B859-4DDA-BDAC-11D5AF3808AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C08B9CF9-B859-4DDA-BDAC-11D5AF3808AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

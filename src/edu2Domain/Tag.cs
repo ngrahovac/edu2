@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace edu2Domain
 {
-    public class Tag
+    public class Tag : IEquatable<Tag>
     {
         public string Name { get; set; }
         public string Description { get; set; }
@@ -16,6 +17,23 @@ namespace edu2Domain
         public Tag()
         {
 
+        }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as Tag);
+        }
+
+        public bool Equals(Tag other)
+        {
+            return other != null &&
+                   Name == other.Name &&
+                   Description == other.Description;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Name, Description);
         }
     }
 }

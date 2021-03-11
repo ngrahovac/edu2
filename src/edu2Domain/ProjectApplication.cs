@@ -1,6 +1,8 @@
-﻿namespace edu2Domain
+﻿using System;
+
+namespace edu2Domain
 {
-    public class ProjectApplication
+    public class ProjectApplication : IEquatable<ProjectApplication>
     {
         public int Id { get; set; }
         public int ProjectId { get; set; }
@@ -13,6 +15,22 @@
         public ProjectApplication()
         {
 
+        }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as ProjectApplication);
+        }
+
+        public bool Equals(ProjectApplication other)
+        {
+            return other != null &&
+                   Id == other.Id;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Id);
         }
     }
 }

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using edu2WebAPI.Data;
 
 namespace edu2WebAPI.Migrations
 {
     [DbContext(typeof(Edu2DbContext))]
-    partial class Edu2DbContextModelSnapshot : ModelSnapshot
+    [Migration("20210310103542_AddShadowPKSocial")]
+    partial class AddShadowPKSocial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

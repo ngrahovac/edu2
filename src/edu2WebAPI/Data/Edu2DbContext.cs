@@ -116,6 +116,13 @@ namespace edu2WebAPI.Data
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("Key", 0);
 
+            modelBuilder.Entity<Social>()
+                        .Property<int>("Id")
+                        .HasColumnName("Id")
+                        .HasColumnType("int")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("Key", 0);
+
             // configure FKs (no navigation property)
             modelBuilder.Entity<ProjectApplication>(e =>
             {
@@ -159,10 +166,10 @@ namespace edu2WebAPI.Data
 
             modelBuilder.Entity<Social>()
                         .HasData(
-                            new Social { Id = 1, Name = "Website" },
-                            new Social { Id = 2, Name = "LinkedIn" },
-                            new Social { Id = 3, Name = "ResearchGate" },
-                            new Social { Id = 4, Name = "Twitter" });
+                            new { Id = 1, Name = "Website" },
+                            new { Id = 2, Name = "LinkedIn" },
+                            new { Id = 3, Name = "ResearchGate" },
+                            new { Id = 4, Name = "Twitter" });
 
             modelBuilder.Entity<Faculty>()
                         .HasData(

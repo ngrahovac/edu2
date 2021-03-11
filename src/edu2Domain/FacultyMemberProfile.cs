@@ -11,8 +11,17 @@
 
         public override bool IsRecommendedFor(User user)
         {
-            return user is FacultyMember;
-            // TODO: check if parameters match
+            if (user is FacultyMember fm)
+            {
+                if (StudyField != null && StudyField != fm.StudyField)
+                    return false;
+
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

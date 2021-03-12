@@ -1,4 +1,4 @@
-﻿using edu2Domain;
+﻿using edu2Model.Domain;
 using edu2WebAPI.Data;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.EntityFrameworkCore;

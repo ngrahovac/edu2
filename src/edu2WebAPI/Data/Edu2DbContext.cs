@@ -1,4 +1,4 @@
-﻿using edu2Domain;
+﻿using edu2Model.Domain;
 using edu2WebAPI.Auth;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;

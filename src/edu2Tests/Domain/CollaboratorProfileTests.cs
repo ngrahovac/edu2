@@ -1,4 +1,4 @@
-using edu2Domain;
+using edu2Model.Domain;
 using System;
 using System.Collections;
 using System.Collections.Generic;

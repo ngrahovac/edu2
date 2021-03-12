@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace edu2Domain
+namespace edu2Model.Domain
 {
     public class Social : IEquatable<Social>
     {

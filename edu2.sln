@@ -5,9 +5,9 @@ VisualStudioVersion = 16.0.30803.129
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "edu2WebAPI", "src\edu2WebAPI\edu2WebAPI.csproj", "{E2E5502A-834D-4916-922D-508CA7075613}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "edu2Domain", "src\edu2Domain\edu2Domain.csproj", "{76115A8A-74D4-43A6-8F08-77141557DBEB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "edu2Model", "src\edu2Domain\edu2Model.csproj", "{76115A8A-74D4-43A6-8F08-77141557DBEB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "edu2Tests", "src\edu2Tests\edu2Tests.csproj", "{C08B9CF9-B859-4DDA-BDAC-11D5AF3808AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "edu2Tests", "src\edu2Tests\edu2Tests.csproj", "{C08B9CF9-B859-4DDA-BDAC-11D5AF3808AB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

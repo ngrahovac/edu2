@@ -1,6 +1,7 @@
-﻿using System.Reflection;
+﻿using edu2Model.Display;
+using edu2Shared.DisplayModel;
 
-namespace edu2Domain
+namespace edu2Model.Domain
 {
     public class StudentProfile : CollaboratorProfile
     {
@@ -30,6 +31,11 @@ namespace edu2Domain
             {
                 return false;
             }
+        }
+
+        public override CollaboratorProfileDisplayModel GetDisplayModel()
+        {
+            return new StudentProfileDisplayModel();
         }
     }
 }

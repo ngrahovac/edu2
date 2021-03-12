@@ -31,7 +31,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\edu2Domain\edu2Domain.csproj" />
+    <ProjectReference Include="..\edu2Domain\edu2Model.csproj" />
   </ItemGroup>
 
 

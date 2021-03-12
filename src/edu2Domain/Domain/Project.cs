@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace edu2Domain
+namespace edu2Model.Domain
 {
     public class Project : IEquatable<Project>
     {
@@ -14,8 +14,8 @@ namespace edu2Domain
         public StudyField StudyField { get; set; }
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
-        public ICollection<CollaboratorProfile> CollaboratorProfiles { get; set; } = new HashSet<CollaboratorProfile>();
         public ICollection<Tag> Tags { get; set; } = new HashSet<Tag>();
+        public ICollection<CollaboratorProfile> CollaboratorProfiles { get; set; } = new HashSet<CollaboratorProfile>();
 
         public Project()
         {

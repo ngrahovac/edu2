@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace edu2Domain
+namespace edu2Model.Domain
 {
     public class ProjectApplication : IEquatable<ProjectApplication>
     {

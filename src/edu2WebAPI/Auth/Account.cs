@@ -1,4 +1,4 @@
-﻿using edu2Domain;
+﻿using edu2Model.Domain;
 using Microsoft.AspNetCore.Identity;
 using System;
 

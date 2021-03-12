@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
+﻿using edu2Shared.DisplayModel;
+using System;
 
-namespace edu2Domain
+namespace edu2Model.Domain
 {
     public abstract class CollaboratorProfile : IEquatable<CollaboratorProfile>
     {
@@ -15,6 +14,8 @@ namespace edu2Domain
         }
 
         public abstract bool IsRecommendedFor(User user);
+
+        public abstract CollaboratorProfileDisplayModel GetDisplayModel();
 
         public override bool Equals(object obj)
         {

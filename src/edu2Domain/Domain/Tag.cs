@@ -1,24 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace edu2Domain
+namespace edu2Model.Domain
 {
-    public class StudyField : IEquatable<StudyField>
+    public class Tag : IEquatable<Tag>
     {
         public string Name { get; set; }
         public string Description { get; set; }
 
-        public StudyField()
+        // Navigation properties for the purpose of establishing m:n relationship via EF Core only. 
+        public ICollection<UserSettings> UserSettings { get; set; }
+
+        public ICollection<Project> Projects { get; set; }
+
+        public Tag()
         {
 
         }
 
         public override bool Equals(object obj)
         {
-            return Equals(obj as StudyField);
+            return Equals(obj as Tag);
         }
 
-        public bool Equals(StudyField other)
+        public bool Equals(Tag other)
         {
             return other != null &&
                    Name == other.Name &&

@@ -1,4 +1,7 @@
-﻿namespace edu2Domain
+﻿using edu2Model.Display;
+using edu2Shared.DisplayModel;
+
+namespace edu2Model.Domain
 {
     public class FacultyMemberProfile : CollaboratorProfile
     {
@@ -22,6 +25,11 @@
             {
                 return false;
             }
+        }
+
+        public override CollaboratorProfileDisplayModel GetDisplayModel()
+        {
+            return new FacultyMemberProfileDisplayModel();
         }
     }
 }

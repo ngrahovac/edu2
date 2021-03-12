@@ -1,23 +1,26 @@
 ﻿using System;
+using System.Collections.Generic;
 
-namespace edu2Domain
+namespace edu2Model.Domain
 {
-    public class StudyProgramSpecialization : IEquatable<StudyProgramSpecialization>
+    public class Faculty : IEquatable<Faculty>
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public string Address { get; set; }
+        public ICollection<StudyProgram> StudyPrograms { get; set; } = new HashSet<StudyProgram>();
 
-        public StudyProgramSpecialization()
+        public Faculty()
         {
 
         }
 
         public override bool Equals(object obj)
         {
-            return Equals(obj as StudyProgramSpecialization);
+            return Equals(obj as Faculty);
         }
 
-        public bool Equals(StudyProgramSpecialization other)
+        public bool Equals(Faculty other)
         {
             return other != null &&
                    Id == other.Id;

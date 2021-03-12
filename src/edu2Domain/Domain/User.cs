@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 
-namespace edu2Domain
+namespace edu2Model.Domain
 {
     public abstract class User : IEquatable<User>
     {

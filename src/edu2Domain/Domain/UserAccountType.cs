@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace edu2Domain
+﻿namespace edu2Model.Domain
 {
     public enum UserAccountType
     {

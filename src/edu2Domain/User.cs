@@ -13,10 +13,10 @@ namespace edu2Domain
 
         }
 
-        public bool CanApplyTo(CollaboratorProfile collaboratorProfile)
+        public bool CanApplyTo(Project project)
         {
-            return !IsAuthor(collaboratorProfile.Project)
-                   && collaboratorProfile.Project.ProjectStatus == ProjectStatus.Active;
+            return !IsAuthor(project)
+                   && project.ProjectStatus == ProjectStatus.Active;
         }
 
         public bool IsAuthor(Project project)

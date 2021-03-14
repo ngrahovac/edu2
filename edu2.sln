@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "edu2Model", "src\edu2Domain
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "edu2Tests", "src\edu2Tests\edu2Tests.csproj", "{C08B9CF9-B859-4DDA-BDAC-11D5AF3808AB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "edu2Client", "src\edu2Client\edu2Client.csproj", "{B052C62B-CA3B-40FE-A42C-EF4D4497328A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{C08B9CF9-B859-4DDA-BDAC-11D5AF3808AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C08B9CF9-B859-4DDA-BDAC-11D5AF3808AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C08B9CF9-B859-4DDA-BDAC-11D5AF3808AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B052C62B-CA3B-40FE-A42C-EF4D4497328A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B052C62B-CA3B-40FE-A42C-EF4D4497328A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B052C62B-CA3B-40FE-A42C-EF4D4497328A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B052C62B-CA3B-40FE-A42C-EF4D4497328A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -59,6 +59,9 @@ namespace edu2WebAPI.Data
                         .HasMany(e => e.UserTags)
                         .WithMany(e => e.UserSettings);
 
+            modelBuilder.Entity<User>()
+                        .Ignore(e => e.FullName);
+
             // configure FKs in derived concrete classes
             modelBuilder.Entity<Student>(e =>
             {
@@ -245,6 +248,8 @@ namespace edu2WebAPI.Data
                         .HasData(
                             new
                             {
+                                FirstName = "Jane",
+                                LastName = "Doe",
                                 Id = 1,
                                 UserSettingsId = 1,
                                 FacultyId = 1,
@@ -254,6 +259,8 @@ namespace edu2WebAPI.Data
                             },
                             new
                             {
+                                FirstName = "John",
+                                LastName = "Doe",
                                 Id = 2,
                                 UserSettingsId = 2,
                                 FacultyId = 1,

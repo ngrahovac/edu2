@@ -10,8 +10,8 @@ using edu2WebAPI.Data;
 namespace edu2WebAPI.Migrations
 {
     [DbContext(typeof(Edu2DbContext))]
-    [Migration("20210309154245_SeedData1")]
-    partial class SeedData1
+    [Migration("20210314154232_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -51,7 +51,7 @@ namespace edu2WebAPI.Migrations
                     b.ToTable("TagUserSettings");
                 });
 
-            modelBuilder.Entity("edu2Domain.CollaboratorProfile", b =>
+            modelBuilder.Entity("edu2Model.Domain.CollaboratorProfile", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -77,7 +77,7 @@ namespace edu2WebAPI.Migrations
                     b.HasDiscriminator<string>("Discriminator").HasValue("CollaboratorProfile");
                 });
 
-            modelBuilder.Entity("edu2Domain.Faculty", b =>
+            modelBuilder.Entity("edu2Model.Domain.Faculty", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -93,9 +93,23 @@ namespace edu2WebAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Faculties");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Address = "Patre 5, 78000 Banja Luka",
+                            Name = "Elektrotehnički fakultet"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Address = "Vojvode Stepe Stepanovića 71, 78000 Banja Luka",
+                            Name = "Mašinski fakultet"
+                        });
                 });
 
-            modelBuilder.Entity("edu2Domain.Project", b =>
+            modelBuilder.Entity("edu2Model.Domain.Project", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -130,9 +144,20 @@ namespace edu2WebAPI.Migrations
                     b.HasIndex("StudyFieldId");
 
                     b.ToTable("Projects");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AuthorId = 1,
+                            Description = "Opis projekta",
+                            ProjectStatus = 1,
+                            StudyFieldId = 1,
+                            Title = "Naslov projekta"
+                        });
                 });
 
-            modelBuilder.Entity("edu2Domain.ProjectApplication", b =>
+            modelBuilder.Entity("edu2Model.Domain.ProjectApplication", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -166,13 +191,25 @@ namespace edu2WebAPI.Migrations
                     b.HasIndex("ProjectId");
 
                     b.ToTable("ProjectApplications");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ApplicantId = 2,
+                            CollaboratorProfileId = 1,
+                            ProjectApplicationStatus = 3,
+                            ProjectId = 1
+                        });
                 });
 
-            modelBuilder.Entity("edu2Domain.Social", b =>
+            modelBuilder.Entity("edu2Model.Domain.Social", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
+                        .HasColumnName("Id")
+                        .HasAnnotation("Key", 0)
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
@@ -180,10 +217,32 @@ namespace edu2WebAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Social");
+                    b.ToTable("Socials");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Website"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "LinkedIn"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "ResearchGate"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Twitter"
+                        });
                 });
 
-            modelBuilder.Entity("edu2Domain.StudyField", b =>
+            modelBuilder.Entity("edu2Model.Domain.StudyField", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -201,9 +260,31 @@ namespace edu2WebAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("StudyFields");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Računarske nauke"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Opšta elektrotehnika"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Automatika i robotika"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Telekomunikacije"
+                        });
                 });
 
-            modelBuilder.Entity("edu2Domain.StudyProgram", b =>
+            modelBuilder.Entity("edu2Model.Domain.StudyProgram", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -227,9 +308,91 @@ namespace edu2WebAPI.Migrations
                     b.HasIndex("FacultyId");
 
                     b.ToTable("StudyProgram");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Cycle = 1,
+                            DurationYears = 4,
+                            FacultyId = 1,
+                            Name = "Računarstvo i informatika"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Cycle = 1,
+                            DurationYears = 4,
+                            FacultyId = 1,
+                            Name = "Elektronika i telekomunikacije"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Cycle = 1,
+                            DurationYears = 4,
+                            FacultyId = 1,
+                            Name = "Elektroenergetika i automatika"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Cycle = 2,
+                            DurationYears = 1,
+                            FacultyId = 1,
+                            Name = "Računarstvo i informatika"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Cycle = 2,
+                            DurationYears = 1,
+                            FacultyId = 1,
+                            Name = "Elektronika i telekomunikacije"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Cycle = 2,
+                            DurationYears = 1,
+                            FacultyId = 1,
+                            Name = "Elektroenergetski i industrijski sistemi"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Cycle = 2,
+                            DurationYears = 1,
+                            FacultyId = 1,
+                            Name = "Digitalno emitovanje i širokopojasne tehnologije"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Cycle = 3,
+                            DurationYears = 3,
+                            FacultyId = 1,
+                            Name = "Informaciono-komunikacione tehnologije"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Cycle = 1,
+                            DurationYears = 4,
+                            FacultyId = 2,
+                            Name = "Mehatronika"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Cycle = 1,
+                            DurationYears = 4,
+                            FacultyId = 2,
+                            Name = "Industrijsko inženjerstvo"
+                        });
                 });
 
-            modelBuilder.Entity("edu2Domain.StudyProgramSpecialization", b =>
+            modelBuilder.Entity("edu2Model.Domain.StudyProgramSpecialization", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -247,9 +410,47 @@ namespace edu2WebAPI.Migrations
                     b.HasIndex("StudyProgramId");
 
                     b.ToTable("StudyProgramSpecialization");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Računarski inženjering",
+                            StudyProgramId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Softverski inženjering",
+                            StudyProgramId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Elektronika",
+                            StudyProgramId = 2
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Telekomunikacije",
+                            StudyProgramId = 2
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Elektroenergetika",
+                            StudyProgramId = 3
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "Automatika",
+                            StudyProgramId = 3
+                        });
                 });
 
-            modelBuilder.Entity("edu2Domain.Tag", b =>
+            modelBuilder.Entity("edu2Model.Domain.Tag", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -291,7 +492,7 @@ namespace edu2WebAPI.Migrations
                         });
                 });
 
-            modelBuilder.Entity("edu2Domain.User", b =>
+            modelBuilder.Entity("edu2Model.Domain.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -300,6 +501,12 @@ namespace edu2WebAPI.Migrations
 
                     b.Property<string>("Discriminator")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("UserSettingsId")
@@ -314,7 +521,7 @@ namespace edu2WebAPI.Migrations
                     b.HasDiscriminator<string>("Discriminator").HasValue("User");
                 });
 
-            modelBuilder.Entity("edu2Domain.UserSettings", b =>
+            modelBuilder.Entity("edu2Model.Domain.UserSettings", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -342,9 +549,27 @@ namespace edu2WebAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("UserSettings");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Bio = "Sample bio",
+                            EmailVisible = true,
+                            PhoneVisible = true,
+                            ProjectsVisible = true
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Bio = "Another sample bio",
+                            EmailVisible = true,
+                            PhoneVisible = true,
+                            ProjectsVisible = true
+                        });
                 });
 
-            modelBuilder.Entity("edu2Domain.UserSocials", b =>
+            modelBuilder.Entity("edu2Model.Domain.UserSocials", b =>
                 {
                     b.Property<int>("SocialId")
                         .HasColumnType("int");
@@ -360,6 +585,20 @@ namespace edu2WebAPI.Migrations
                     b.HasIndex("UserSettingsId");
 
                     b.ToTable("UserSocials");
+
+                    b.HasData(
+                        new
+                        {
+                            SocialId = 1,
+                            UserSettingsId = 1,
+                            Value = "ngrahovac.com"
+                        },
+                        new
+                        {
+                            SocialId = 2,
+                            UserSettingsId = 1,
+                            Value = "www.linkedin.com/nikolina-grahovac"
+                        });
                 });
 
             modelBuilder.Entity("edu2WebAPI.Auth.Account", b =>
@@ -417,11 +656,47 @@ namespace edu2WebAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Accounts");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "255fd95b-c771-4be6-852c-5634244b17ac",
+                            Email = "nikolinagrahovac@test.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = true,
+                            NormalizedEmail = "NIKOLINAGRAHOVAC@TEST.COM",
+                            NormalizedUserName = "NIKOLINAGRAHOVAC@TEST.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEB3fErhGcr/yNJzrnpwkMN0eSAjxvNKxRhnu+pc/nKkNmCuBIFm9Hb6ow4nuD2EBrA==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "BRPZ5G5VMPU533RX5YC3S62EYN5H22EL",
+                            TwoFactorEnabled = false,
+                            UserAccountType = 0,
+                            UserName = "nikolinagrahovac@test.com"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "80088041-9c29-474a-8668-3277462c4d51",
+                            Email = "zoranpantos@test.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = true,
+                            NormalizedEmail = "ZORANPANTOS@TEST.COM",
+                            NormalizedUserName = "ZORANPANTOS@TEST.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEFhPDeoQp9iRyCWYDdk+1+BVvrNObJl/WW/vJBiezvzhe69X92GG4+z9XUzHS8qN3A==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "7ZTQGH5Q7AX4CPI73DWSQS2OMESYR6KT",
+                            TwoFactorEnabled = false,
+                            UserAccountType = 0,
+                            UserName = "zoranpantos@test.com"
+                        });
                 });
 
-            modelBuilder.Entity("edu2Domain.FacultyMemberProfile", b =>
+            modelBuilder.Entity("edu2Model.Domain.FacultyMemberProfile", b =>
                 {
-                    b.HasBaseType("edu2Domain.CollaboratorProfile");
+                    b.HasBaseType("edu2Model.Domain.CollaboratorProfile");
 
                     b.Property<int?>("StudyFieldId")
                         .HasColumnType("int");
@@ -429,16 +704,21 @@ namespace edu2WebAPI.Migrations
                     b.HasIndex("StudyFieldId");
 
                     b.HasDiscriminator().HasValue("FacultyMemberProfile");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 2,
+                            Description = "Profil nastavnog saradnika",
+                            ProjectId = 1
+                        });
                 });
 
-            modelBuilder.Entity("edu2Domain.StudentProfile", b =>
+            modelBuilder.Entity("edu2Model.Domain.StudentProfile", b =>
                 {
-                    b.HasBaseType("edu2Domain.CollaboratorProfile");
+                    b.HasBaseType("edu2Model.Domain.CollaboratorProfile");
 
                     b.Property<int?>("FacultyId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("StudyCycle")
                         .HasColumnType("int");
 
                     b.Property<int?>("StudyProgramId")
@@ -457,11 +737,20 @@ namespace edu2WebAPI.Migrations
                     b.HasIndex("StudyProgramSpecializationId");
 
                     b.HasDiscriminator().HasValue("StudentProfile");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "Studentski profil",
+                            ProjectId = 1,
+                            FacultyId = 1
+                        });
                 });
 
-            modelBuilder.Entity("edu2Domain.FacultyMember", b =>
+            modelBuilder.Entity("edu2Model.Domain.FacultyMember", b =>
                 {
-                    b.HasBaseType("edu2Domain.User");
+                    b.HasBaseType("edu2Model.Domain.User");
 
                     b.Property<int>("AcademicRank")
                         .HasColumnType("int");
@@ -480,9 +769,9 @@ namespace edu2WebAPI.Migrations
                     b.HasDiscriminator().HasValue("FacultyMember");
                 });
 
-            modelBuilder.Entity("edu2Domain.Student", b =>
+            modelBuilder.Entity("edu2Model.Domain.Student", b =>
                 {
-                    b.HasBaseType("edu2Domain.User");
+                    b.HasBaseType("edu2Model.Domain.User");
 
                     b.Property<int>("FacultyId")
                         .HasColumnType("int");
@@ -503,17 +792,41 @@ namespace edu2WebAPI.Migrations
                     b.HasIndex("StudyProgramSpecializationId");
 
                     b.HasDiscriminator().HasValue("Student");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            FirstName = "Jane",
+                            LastName = "Doe",
+                            UserSettingsId = 1,
+                            FacultyId = 1,
+                            StudyProgramId = 1,
+                            StudyProgramSpecializationId = 2,
+                            StudyYear = 4
+                        },
+                        new
+                        {
+                            Id = 2,
+                            FirstName = "John",
+                            LastName = "Doe",
+                            UserSettingsId = 2,
+                            FacultyId = 1,
+                            StudyProgramId = 1,
+                            StudyProgramSpecializationId = 2,
+                            StudyYear = 3
+                        });
                 });
 
             modelBuilder.Entity("ProjectTag", b =>
                 {
-                    b.HasOne("edu2Domain.Project", null)
+                    b.HasOne("edu2Model.Domain.Project", null)
                         .WithMany()
                         .HasForeignKey("ProjectsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("edu2Domain.Tag", null)
+                    b.HasOne("edu2Model.Domain.Tag", null)
                         .WithMany()
                         .HasForeignKey("TagsId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -522,96 +835,94 @@ namespace edu2WebAPI.Migrations
 
             modelBuilder.Entity("TagUserSettings", b =>
                 {
-                    b.HasOne("edu2Domain.UserSettings", null)
+                    b.HasOne("edu2Model.Domain.UserSettings", null)
                         .WithMany()
                         .HasForeignKey("UserSettingsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("edu2Domain.Tag", null)
+                    b.HasOne("edu2Model.Domain.Tag", null)
                         .WithMany()
                         .HasForeignKey("UserTagsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("edu2Domain.CollaboratorProfile", b =>
+            modelBuilder.Entity("edu2Model.Domain.CollaboratorProfile", b =>
                 {
-                    b.HasOne("edu2Domain.Project", "Project")
+                    b.HasOne("edu2Model.Domain.Project", null)
                         .WithMany("CollaboratorProfiles")
                         .HasForeignKey("ProjectId");
-
-                    b.Navigation("Project");
                 });
 
-            modelBuilder.Entity("edu2Domain.Project", b =>
+            modelBuilder.Entity("edu2Model.Domain.Project", b =>
                 {
-                    b.HasOne("edu2Domain.User", null)
+                    b.HasOne("edu2Model.Domain.User", null)
                         .WithMany()
                         .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.HasOne("edu2Domain.StudyField", "StudyField")
+                    b.HasOne("edu2Model.Domain.StudyField", "StudyField")
                         .WithMany()
                         .HasForeignKey("StudyFieldId");
 
                     b.Navigation("StudyField");
                 });
 
-            modelBuilder.Entity("edu2Domain.ProjectApplication", b =>
+            modelBuilder.Entity("edu2Model.Domain.ProjectApplication", b =>
                 {
-                    b.HasOne("edu2Domain.User", null)
+                    b.HasOne("edu2Model.Domain.User", null)
                         .WithMany()
                         .HasForeignKey("ApplicantId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("edu2Domain.CollaboratorProfile", null)
+                    b.HasOne("edu2Model.Domain.CollaboratorProfile", null)
                         .WithMany()
                         .HasForeignKey("CollaboratorProfileId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("edu2Domain.Project", null)
+                    b.HasOne("edu2Model.Domain.Project", null)
                         .WithMany()
                         .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("edu2Domain.StudyProgram", b =>
+            modelBuilder.Entity("edu2Model.Domain.StudyProgram", b =>
                 {
-                    b.HasOne("edu2Domain.Faculty", null)
+                    b.HasOne("edu2Model.Domain.Faculty", null)
                         .WithMany("StudyPrograms")
                         .HasForeignKey("FacultyId");
                 });
 
-            modelBuilder.Entity("edu2Domain.StudyProgramSpecialization", b =>
+            modelBuilder.Entity("edu2Model.Domain.StudyProgramSpecialization", b =>
                 {
-                    b.HasOne("edu2Domain.StudyProgram", null)
+                    b.HasOne("edu2Model.Domain.StudyProgram", null)
                         .WithMany("ProgramSpecializations")
                         .HasForeignKey("StudyProgramId");
                 });
 
-            modelBuilder.Entity("edu2Domain.User", b =>
+            modelBuilder.Entity("edu2Model.Domain.User", b =>
                 {
-                    b.HasOne("edu2Domain.UserSettings", "UserSettings")
+                    b.HasOne("edu2Model.Domain.UserSettings", "UserSettings")
                         .WithMany()
                         .HasForeignKey("UserSettingsId");
 
                     b.Navigation("UserSettings");
                 });
 
-            modelBuilder.Entity("edu2Domain.UserSocials", b =>
+            modelBuilder.Entity("edu2Model.Domain.UserSocials", b =>
                 {
-                    b.HasOne("edu2Domain.Social", "Social")
+                    b.HasOne("edu2Model.Domain.Social", "Social")
                         .WithMany("UserSocials")
                         .HasForeignKey("SocialId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("edu2Domain.UserSettings", "UserSettings")
+                    b.HasOne("edu2Model.Domain.UserSettings", "UserSettings")
                         .WithMany("UserSocials")
                         .HasForeignKey("UserSettingsId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -622,85 +933,85 @@ namespace edu2WebAPI.Migrations
                     b.Navigation("UserSettings");
                 });
 
-            modelBuilder.Entity("edu2Domain.FacultyMemberProfile", b =>
+            modelBuilder.Entity("edu2Model.Domain.FacultyMemberProfile", b =>
                 {
-                    b.HasOne("edu2Domain.StudyField", "StudyField")
+                    b.HasOne("edu2Model.Domain.StudyField", "StudyField")
                         .WithMany()
                         .HasForeignKey("StudyFieldId");
 
                     b.Navigation("StudyField");
                 });
 
-            modelBuilder.Entity("edu2Domain.StudentProfile", b =>
+            modelBuilder.Entity("edu2Model.Domain.StudentProfile", b =>
                 {
-                    b.HasOne("edu2Domain.Faculty", null)
+                    b.HasOne("edu2Model.Domain.Faculty", null)
                         .WithMany()
                         .HasForeignKey("FacultyId");
 
-                    b.HasOne("edu2Domain.StudyProgram", null)
+                    b.HasOne("edu2Model.Domain.StudyProgram", null)
                         .WithMany()
                         .HasForeignKey("StudyProgramId");
 
-                    b.HasOne("edu2Domain.StudyProgramSpecialization", null)
+                    b.HasOne("edu2Model.Domain.StudyProgramSpecialization", null)
                         .WithMany()
                         .HasForeignKey("StudyProgramSpecializationId");
                 });
 
-            modelBuilder.Entity("edu2Domain.FacultyMember", b =>
+            modelBuilder.Entity("edu2Model.Domain.FacultyMember", b =>
                 {
-                    b.HasOne("edu2Domain.Faculty", null)
+                    b.HasOne("edu2Model.Domain.Faculty", null)
                         .WithMany()
                         .HasForeignKey("FacultyId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.HasOne("edu2Domain.StudyField", "StudyField")
+                    b.HasOne("edu2Model.Domain.StudyField", "StudyField")
                         .WithMany()
                         .HasForeignKey("StudyFieldId");
 
                     b.Navigation("StudyField");
                 });
 
-            modelBuilder.Entity("edu2Domain.Student", b =>
+            modelBuilder.Entity("edu2Model.Domain.Student", b =>
                 {
-                    b.HasOne("edu2Domain.Faculty", null)
+                    b.HasOne("edu2Model.Domain.Faculty", null)
                         .WithMany()
                         .HasForeignKey("FacultyId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.HasOne("edu2Domain.StudyProgram", null)
+                    b.HasOne("edu2Model.Domain.StudyProgram", null)
                         .WithMany()
                         .HasForeignKey("StudyProgramId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("edu2Domain.StudyProgramSpecialization", null)
+                    b.HasOne("edu2Model.Domain.StudyProgramSpecialization", null)
                         .WithMany()
                         .HasForeignKey("StudyProgramSpecializationId");
                 });
 
-            modelBuilder.Entity("edu2Domain.Faculty", b =>
+            modelBuilder.Entity("edu2Model.Domain.Faculty", b =>
                 {
                     b.Navigation("StudyPrograms");
                 });
 
-            modelBuilder.Entity("edu2Domain.Project", b =>
+            modelBuilder.Entity("edu2Model.Domain.Project", b =>
                 {
                     b.Navigation("CollaboratorProfiles");
                 });
 
-            modelBuilder.Entity("edu2Domain.Social", b =>
+            modelBuilder.Entity("edu2Model.Domain.Social", b =>
                 {
                     b.Navigation("UserSocials");
                 });
 
-            modelBuilder.Entity("edu2Domain.StudyProgram", b =>
+            modelBuilder.Entity("edu2Model.Domain.StudyProgram", b =>
                 {
                     b.Navigation("ProgramSpecializations");
                 });
 
-            modelBuilder.Entity("edu2Domain.UserSettings", b =>
+            modelBuilder.Entity("edu2Model.Domain.UserSettings", b =>
                 {
                     b.Navigation("UserSocials");
                 });

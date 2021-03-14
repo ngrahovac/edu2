@@ -1,16 +1,22 @@
-﻿using System;
+﻿using edu2Model.Display;
+using System;
 
 namespace edu2Model.Domain
 {
     public abstract class User : IEquatable<User>
     {
         public int Id { get; set; } // same as Account.Id
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string FullName => $"{FirstName} {LastName}";
         public UserSettings UserSettings { get; set; }
 
         public User()
         {
 
         }
+
+        public abstract UserDetailsDisplayModel GetDisplayModel();
 
         public bool CanApplyTo(Project project)
         {

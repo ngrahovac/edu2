@@ -1,5 +1,4 @@
 ﻿using edu2Model.Display;
-using edu2Shared.DisplayModel;
 
 namespace edu2Model.Domain
 {

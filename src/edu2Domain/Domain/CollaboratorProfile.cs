@@ -1,4 +1,4 @@
-﻿using edu2Shared.DisplayModel;
+﻿using edu2Model.Display;
 using System;
 
 namespace edu2Model.Domain

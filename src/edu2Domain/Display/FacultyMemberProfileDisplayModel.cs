@@ -1,5 +1,4 @@
 ﻿using edu2Model.Domain;
-using edu2Shared.DisplayModel;
 using System;
 using System.Collections.Generic;
 using System.Text;

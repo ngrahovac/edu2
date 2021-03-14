@@ -49,7 +49,7 @@ namespace edu2WebAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Social",
+                name: "Socials",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -58,7 +58,7 @@ namespace edu2WebAPI.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Social", x => x.Id);
+                    table.PrimaryKey("PK_Socials", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -165,9 +165,9 @@ namespace edu2WebAPI.Migrations
                 {
                     table.PrimaryKey("PK_UserSocials", x => new { x.SocialId, x.UserSettingsId });
                     table.ForeignKey(
-                        name: "FK_UserSocials_Social_SocialId",
+                        name: "FK_UserSocials_Socials_SocialId",
                         column: x => x.SocialId,
-                        principalTable: "Social",
+                        principalTable: "Socials",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -204,15 +204,17 @@ namespace edu2WebAPI.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserSettingsId = table.Column<int>(type: "int", nullable: true),
                     Discriminator = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     FacultyMember_FacultyId = table.Column<int>(type: "int", nullable: true),
                     AcademicRank = table.Column<int>(type: "int", nullable: true),
                     StudyFieldId = table.Column<int>(type: "int", nullable: true),
                     FacultyId = table.Column<int>(type: "int", nullable: true),
-                    StudyYear = table.Column<int>(type: "int", nullable: true),
                     StudyProgramId = table.Column<int>(type: "int", nullable: true),
-                    StudyProgramSpecializationId = table.Column<int>(type: "int", nullable: true)
+                    StudyProgramSpecializationId = table.Column<int>(type: "int", nullable: true),
+                    StudyYear = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -289,14 +291,13 @@ namespace edu2WebAPI.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ProjectId = table.Column<int>(type: "int", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Discriminator = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ProjectId = table.Column<int>(type: "int", nullable: true),
                     StudyFieldId = table.Column<int>(type: "int", nullable: true),
                     FacultyId = table.Column<int>(type: "int", nullable: true),
                     StudyProgramId = table.Column<int>(type: "int", nullable: true),
                     StudyProgramSpecializationId = table.Column<int>(type: "int", nullable: true),
-                    StudyCycle = table.Column<int>(type: "int", nullable: true),
                     StudyYear = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -393,6 +394,135 @@ namespace edu2WebAPI.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.InsertData(
+                table: "Accounts",
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserAccountType", "UserName" },
+                values: new object[,]
+                {
+                    { 2, 0, "80088041-9c29-474a-8668-3277462c4d51", "zoranpantos@test.com", false, true, null, "ZORANPANTOS@TEST.COM", "ZORANPANTOS@TEST.COM", "AQAAAAEAACcQAAAAEFhPDeoQp9iRyCWYDdk+1+BVvrNObJl/WW/vJBiezvzhe69X92GG4+z9XUzHS8qN3A==", null, false, "7ZTQGH5Q7AX4CPI73DWSQS2OMESYR6KT", false, 0, "zoranpantos@test.com" },
+                    { 1, 0, "255fd95b-c771-4be6-852c-5634244b17ac", "nikolinagrahovac@test.com", false, true, null, "NIKOLINAGRAHOVAC@TEST.COM", "NIKOLINAGRAHOVAC@TEST.COM", "AQAAAAEAACcQAAAAEB3fErhGcr/yNJzrnpwkMN0eSAjxvNKxRhnu+pc/nKkNmCuBIFm9Hb6ow4nuD2EBrA==", null, false, "BRPZ5G5VMPU533RX5YC3S62EYN5H22EL", false, 0, "nikolinagrahovac@test.com" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Faculties",
+                columns: new[] { "Id", "Address", "Name" },
+                values: new object[,]
+                {
+                    { 1, "Patre 5, 78000 Banja Luka", "Elektrotehnički fakultet" },
+                    { 2, "Vojvode Stepe Stepanovića 71, 78000 Banja Luka", "Mašinski fakultet" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Socials",
+                columns: new[] { "Id", "Name" },
+                values: new object[,]
+                {
+                    { 2, "LinkedIn" },
+                    { 3, "ResearchGate" },
+                    { 4, "Twitter" },
+                    { 1, "Website" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "StudyFields",
+                columns: new[] { "Id", "Description", "Name" },
+                values: new object[,]
+                {
+                    { 1, null, "Računarske nauke" },
+                    { 2, null, "Opšta elektrotehnika" },
+                    { 4, null, "Telekomunikacije" },
+                    { 3, null, "Automatika i robotika" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Tags",
+                columns: new[] { "Id", "Description", "Name" },
+                values: new object[,]
+                {
+                    { 1, null, "web" },
+                    { 2, null, "desktop" },
+                    { 3, null, "mobile" },
+                    { 4, null, "iot" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "UserSettings",
+                columns: new[] { "Id", "Bio", "CvLink", "EmailVisible", "PhoneVisible", "PhotoLink", "ProjectsVisible" },
+                values: new object[,]
+                {
+                    { 1, "Sample bio", null, true, true, null, true },
+                    { 2, "Another sample bio", null, true, true, null, true }
+                });
+
+            migrationBuilder.InsertData(
+                table: "StudyProgram",
+                columns: new[] { "Id", "Cycle", "DurationYears", "FacultyId", "Name" },
+                values: new object[,]
+                {
+                    { 1, 1, 4, 1, "Računarstvo i informatika" },
+                    { 2, 1, 4, 1, "Elektronika i telekomunikacije" },
+                    { 3, 1, 4, 1, "Elektroenergetika i automatika" },
+                    { 4, 2, 1, 1, "Računarstvo i informatika" },
+                    { 5, 2, 1, 1, "Elektronika i telekomunikacije" },
+                    { 6, 2, 1, 1, "Elektroenergetski i industrijski sistemi" },
+                    { 7, 2, 1, 1, "Digitalno emitovanje i širokopojasne tehnologije" },
+                    { 8, 3, 3, 1, "Informaciono-komunikacione tehnologije" },
+                    { 9, 1, 4, 2, "Mehatronika" },
+                    { 10, 1, 4, 2, "Industrijsko inženjerstvo" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "UserSocials",
+                columns: new[] { "SocialId", "UserSettingsId", "Value" },
+                values: new object[,]
+                {
+                    { 1, 1, "ngrahovac.com" },
+                    { 2, 1, "www.linkedin.com/nikolina-grahovac" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "StudyProgramSpecialization",
+                columns: new[] { "Id", "Name", "StudyProgramId" },
+                values: new object[,]
+                {
+                    { 1, "Računarski inženjering", 1 },
+                    { 2, "Softverski inženjering", 1 },
+                    { 3, "Elektronika", 2 },
+                    { 4, "Telekomunikacije", 2 },
+                    { 5, "Elektroenergetika", 3 },
+                    { 6, "Automatika", 3 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "Id", "Discriminator", "FacultyId", "FirstName", "LastName", "StudyProgramId", "StudyProgramSpecializationId", "StudyYear", "UserSettingsId" },
+                values: new object[] { 1, "Student", 1, "Jane", "Doe", 1, 2, 4, 1 });
+
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "Id", "Discriminator", "FacultyId", "FirstName", "LastName", "StudyProgramId", "StudyProgramSpecializationId", "StudyYear", "UserSettingsId" },
+                values: new object[] { 2, "Student", 1, "John", "Doe", 1, 2, 3, 2 });
+
+            migrationBuilder.InsertData(
+                table: "Projects",
+                columns: new[] { "Id", "AuthorId", "Description", "EndDate", "ProjectStatus", "StartDate", "StudyFieldId", "Title" },
+                values: new object[] { 1, 1, "Opis projekta", null, 1, null, 1, "Naslov projekta" });
+
+            migrationBuilder.InsertData(
+                table: "CollaboratorProfile",
+                columns: new[] { "Id", "Description", "Discriminator", "ProjectId", "StudyFieldId" },
+                values: new object[] { 2, "Profil nastavnog saradnika", "FacultyMemberProfile", 1, null });
+
+            migrationBuilder.InsertData(
+                table: "CollaboratorProfile",
+                columns: new[] { "Id", "Description", "Discriminator", "FacultyId", "ProjectId", "StudyProgramId", "StudyProgramSpecializationId", "StudyYear" },
+                values: new object[] { 1, "Studentski profil", "StudentProfile", 1, 1, null, null, null });
+
+            migrationBuilder.InsertData(
+                table: "ProjectApplications",
+                columns: new[] { "Id", "ApplicantComment", "ApplicantId", "AuthorComment", "CollaboratorProfileId", "ProjectApplicationStatus", "ProjectId" },
+                values: new object[] { 1, null, 2, null, 1, 3, 1 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_CollaboratorProfile_FacultyId",
@@ -524,7 +654,7 @@ namespace edu2WebAPI.Migrations
                 name: "Tags");
 
             migrationBuilder.DropTable(
-                name: "Social");
+                name: "Socials");
 
             migrationBuilder.DropTable(
                 name: "Projects");

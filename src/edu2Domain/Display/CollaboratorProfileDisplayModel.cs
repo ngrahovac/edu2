@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace edu2Shared.DisplayModel
+namespace edu2Model.Display
 {
     public abstract class CollaboratorProfileDisplayModel
     {

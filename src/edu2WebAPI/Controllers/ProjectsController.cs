@@ -45,7 +45,7 @@ namespace edu2WebAPI.Controllers
                 }
                 catch (Exception ex)
                 {
-                    return new ProjectDetailsDisplayModel { Title = ex.Message };
+                    return new StatusCodeResult(StatusCodes.Status500InternalServerError);
                 }
             }
         }

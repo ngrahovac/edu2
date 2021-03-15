@@ -1,4 +1,6 @@
-﻿namespace edu2Model.Domain
+﻿using edu2Model.Display;
+
+namespace edu2Model.Domain
 {
     public class FacultyMember : User
     {
@@ -9,6 +11,10 @@
         public FacultyMember()
         {
 
+        }
+        public override UserDetailsDisplayModel GetDisplayModel()
+        {
+            return new FacultyMemberDisplayModel();
         }
     }
 }

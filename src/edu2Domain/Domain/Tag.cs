@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 namespace edu2Model.Domain
@@ -9,8 +10,11 @@ namespace edu2Model.Domain
         public string Description { get; set; }
 
         // Navigation properties for the purpose of establishing m:n relationship via EF Core only. 
+
+        [JsonIgnore]
         public ICollection<UserSettings> UserSettings { get; set; }
 
+        [JsonIgnore]
         public ICollection<Project> Projects { get; set; }
 
         public Tag()

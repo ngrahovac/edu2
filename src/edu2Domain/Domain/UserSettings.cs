@@ -11,7 +11,7 @@ namespace edu2Model.Domain
         public string CvLink { get; set; }
         public bool EmailVisible { get; set; } = false;
         public bool PhoneVisible { get; set; } = false;
-        public bool ProjectsVisible { get; set; } = false;
+        public bool ProjectsVisible { get; set; } = false;      // TODO: implement fetching user projects
         public ICollection<Tag> UserTags { get; set; }
         public ICollection<UserSocials> UserSocials { get; set; }
         public ICollection<Social> Socials { get; set; }

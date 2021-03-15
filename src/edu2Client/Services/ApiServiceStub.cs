@@ -49,6 +49,13 @@ namespace edu2Client.Services
             {
                 obj = faculties;
             }
+            else if (url.StartsWith("users"))
+            {
+                var user = users.ElementAt(0);
+                var model = user.GetDisplayModel();
+                model.FromUser(user);
+                obj = model;
+            }
 
             return JsonConvert.SerializeObject(obj, new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto });
         }

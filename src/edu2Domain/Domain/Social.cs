@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 namespace edu2Model.Domain
@@ -6,7 +7,11 @@ namespace edu2Model.Domain
     public class Social : IEquatable<Social>
     {
         public string Name { get; set; }
+
+        [JsonIgnore]
         public ICollection<UserSocials> UserSocials { get; set; }
+
+        [JsonIgnore]
         public ICollection<UserSettings> UserSettings { get; set; }
 
         public override bool Equals(object obj)

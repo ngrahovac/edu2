@@ -40,7 +40,11 @@ namespace edu2WebAPI
             });
 
             services.AddControllers()
-                    .AddNewtonsoftJson(options => options.SerializerSettings.TypeNameHandling = TypeNameHandling.Auto);
+                    .AddNewtonsoftJson(options =>
+                    {
+                        options.SerializerSettings.TypeNameHandling = TypeNameHandling.Auto;
+                        options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+                    });
 
             services.AddDbContext<Edu2DbContext>();
         }

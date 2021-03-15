@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 
 namespace edu2Model.Domain
 {
@@ -7,11 +8,16 @@ namespace edu2Model.Domain
         public string Value { get; set; }
 
         // properties for establishing join table via EF core
+        [JsonIgnore]
         public int UserSettingsId { get; set; }
-        public UserSettings UserSettings { get; set; }
-        public int SocialId { get; set; }
-        public Social Social { get; set; }
 
+        [JsonIgnore]
+        public UserSettings UserSettings { get; set; }
+
+        [JsonIgnore]
+        public int SocialId { get; set; }
+
+        public Social Social { get; set; }
 
         public UserSocials()
         {
